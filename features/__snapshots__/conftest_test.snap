@@ -1,4 +1,54 @@
 
+[success:stdout - 1]
+[
+  {
+    "filename": "acceptance/examples/empty_input.json",
+    "namespace": "main",
+    "successes": 1
+  }
+]
+---
+
+[success:stderr - 1]
+
+---
+
+[plain text deny:stdout - 1]
+FAIL - acceptance/examples/empty_input.json - main - Failure due to overripeness
+
+1 test, 0 passed, 0 warnings, 1 failure, 0 exceptions
+
+---
+
+[plain text deny:stderr - 1]
+
+---
+
+[appstudio success:stdout - 1]
+{
+  "timestamp": "${TIMESTAMP}",
+  "namespace": "main",
+  "successes": 1,
+  "failures": 0,
+  "warnings": 0,
+  "result": "SUCCESS",
+  "note": "All checks passed successfully"
+}
+---
+
+[appstudio success:stderr - 1]
+
+---
+
+[normal error:stdout - 1]
+
+---
+
+[normal error:stderr - 1]
+Error: running test: load: loading policies: load: 1 error occurred during loading: stat file/not/exist.rego: no such file or directory
+
+---
+
 [appstudio deny:stdout - 1]
 {
   "timestamp": "${TIMESTAMP}",
@@ -37,39 +87,6 @@
 
 ---
 
-[appstudio error:stdout - 1]
-{
-  "timestamp": "${TIMESTAMP}",
-  "namespace": "",
-  "successes": 0,
-  "failures": 0,
-  "warnings": 0,
-  "result": "ERROR",
-  "note": "Error: running test: load: loading policies: load: 1 error occurred during loading: stat file/not/exist.rego: no such file or directory"
-}
----
-
-[appstudio error:stderr - 1]
-Error: running test: load: loading policies: load: 1 error occurred during loading: stat file/not/exist.rego: no such file or directory
-
----
-
-[appstudio warning:stdout - 1]
-{
-  "timestamp": "${TIMESTAMP}",
-  "namespace": "main",
-  "successes": 0,
-  "failures": 0,
-  "warnings": 1,
-  "result": "WARNING",
-  "note": "Warnings detected"
-}
----
-
-[appstudio warning:stderr - 1]
-
----
-
 [a warning:stdout - 1]
 [
   {
@@ -89,92 +106,6 @@ Error: running test: load: loading policies: load: 1 error occurred during loadi
 ---
 
 [a warning:stderr - 1]
-
----
-
-[a deny with no-fail:stdout - 1]
-[
-  {
-    "filename": "acceptance/examples/empty_input.json",
-    "namespace": "main",
-    "successes": 0,
-    "failures": [
-      {
-        "msg": "Failure due to overripeness",
-        "metadata": {
-          "query": "data.main.deny"
-        }
-      }
-    ]
-  }
-]
----
-
-[a deny with no-fail:stderr - 1]
-
----
-
-[appstudio skipped:stdout - 1]
-{
-  "timestamp": "${TIMESTAMP}",
-  "namespace": "main",
-  "successes": 0,
-  "failures": 0,
-  "warnings": 0,
-  "result": "SKIPPED",
-  "note": "All checks were skipped"
-}
----
-
-[appstudio skipped:stderr - 1]
-
----
-
-[a different appstudio error:stdout - 1]
-{
-  "timestamp": "${TIMESTAMP}",
-  "namespace": "",
-  "successes": 0,
-  "failures": 0,
-  "warnings": 0,
-  "result": "ERROR",
-  "note": "Error: running test: parse configurations: parser unmarshal: unmarshal json: invalid character '\\n' in string literal, path: acceptance/examples/broken_input.json"
-}
----
-
-[a different appstudio error:stderr - 1]
-Error: running test: parse configurations: parser unmarshal: unmarshal json: invalid character '\n' in string literal, path: acceptance/examples/broken_input.json
-
----
-
-[appstudio error nofail:stdout - 1]
-{
-  "timestamp": "${TIMESTAMP}",
-  "namespace": "",
-  "successes": 0,
-  "failures": 0,
-  "warnings": 0,
-  "result": "ERROR",
-  "note": "Error: running test: load: loading policies: load: 1 error occurred during loading: stat file/not/exist.rego: no such file or directory"
-}
----
-
-[appstudio error nofail:stderr - 1]
-Error: running test: load: loading policies: load: 1 error occurred during loading: stat file/not/exist.rego: no such file or directory
-
----
-
-[success:stdout - 1]
-[
-  {
-    "filename": "acceptance/examples/empty_input.json",
-    "namespace": "main",
-    "successes": 1
-  }
-]
----
-
-[success:stderr - 1]
 
 ---
 
@@ -200,38 +131,107 @@ Error: running test: load: loading policies: load: 1 error occurred during loadi
 
 ---
 
-[appstudio success:stdout - 1]
+[appstudio error:stdout - 1]
 {
   "timestamp": "${TIMESTAMP}",
-  "namespace": "main",
-  "successes": 1,
+  "namespace": "",
+  "successes": 0,
   "failures": 0,
   "warnings": 0,
-  "result": "SUCCESS",
-  "note": "All checks passed successfully"
+  "result": "ERROR",
+  "note": "Error: running test: load: loading policies: load: 1 error occurred during loading: stat file/not/exist.rego: no such file or directory"
 }
 ---
 
-[appstudio success:stderr - 1]
+[appstudio error:stderr - 1]
+Error: running test: load: loading policies: load: 1 error occurred during loading: stat file/not/exist.rego: no such file or directory
 
 ---
 
-[plain text deny:stdout - 1]
-FAIL - acceptance/examples/empty_input.json - main - Failure due to overripeness
+[appstudio skipped:stdout - 1]
+{
+  "timestamp": "${TIMESTAMP}",
+  "namespace": "main",
+  "successes": 0,
+  "failures": 0,
+  "warnings": 0,
+  "result": "SKIPPED",
+  "note": "All checks were skipped"
+}
+---
 
-1 test, 0 passed, 0 warnings, 1 failure, 0 exceptions
+[appstudio skipped:stderr - 1]
 
 ---
 
-[plain text deny:stderr - 1]
+[a deny with no-fail:stdout - 1]
+[
+  {
+    "filename": "acceptance/examples/empty_input.json",
+    "namespace": "main",
+    "successes": 0,
+    "failures": [
+      {
+        "msg": "Failure due to overripeness",
+        "metadata": {
+          "query": "data.main.deny"
+        }
+      }
+    ]
+  }
+]
+---
+
+[a deny with no-fail:stderr - 1]
 
 ---
 
-[normal error:stdout - 1]
+[a different appstudio error:stdout - 1]
+{
+  "timestamp": "${TIMESTAMP}",
+  "namespace": "",
+  "successes": 0,
+  "failures": 0,
+  "warnings": 0,
+  "result": "ERROR",
+  "note": "Error: running test: parse configurations: parser unmarshal: unmarshal json: invalid character '\\n' in string literal, path: acceptance/examples/broken_input.json"
+}
+---
+
+[a different appstudio error:stderr - 1]
+Error: running test: parse configurations: parser unmarshal: unmarshal json: invalid character '\n' in string literal, path: acceptance/examples/broken_input.json
 
 ---
 
-[normal error:stderr - 1]
+[appstudio warning:stdout - 1]
+{
+  "timestamp": "${TIMESTAMP}",
+  "namespace": "main",
+  "successes": 0,
+  "failures": 0,
+  "warnings": 1,
+  "result": "WARNING",
+  "note": "Warnings detected"
+}
+---
+
+[appstudio warning:stderr - 1]
+
+---
+
+[appstudio error nofail:stdout - 1]
+{
+  "timestamp": "${TIMESTAMP}",
+  "namespace": "",
+  "successes": 0,
+  "failures": 0,
+  "warnings": 0,
+  "result": "ERROR",
+  "note": "Error: running test: load: loading policies: load: 1 error occurred during loading: stat file/not/exist.rego: no such file or directory"
+}
+---
+
+[appstudio error nofail:stderr - 1]
 Error: running test: load: loading policies: load: 1 error occurred during loading: stat file/not/exist.rego: no such file or directory
 
 ---

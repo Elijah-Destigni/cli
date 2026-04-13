@@ -1,28 +1,4 @@
 
-[short names output:stdout - 1]
-kitty.purr
-
----
-
-[short names output:stderr - 1]
-
----
-
-[default output:stdout - 1]
-# Source: git::${GITHOST}/git/policy.git?ref=${LATEST_COMMIT}
-
-kitty.purr (deny)
-https://conforma.dev/docs/policy/packages/release_kitty.html#kitty__purr
-Kittens
-Fluffy
---
-
----
-
-[default output:stderr - 1]
-
----
-
 [json output:stdout - 1]
 {
   "git::${GITHOST}/git/policy.git?ref=${LATEST_COMMIT}": [
@@ -63,15 +39,6 @@ Fluffy
 
 ---
 
-[inspecting a data source with a merge error:stdout - 1]
-
----
-
-[inspecting a data source with a merge error:stderr - 1]
-Error: Merge error. The 'rule_data' key was found more than once!
-
----
-
 [inspecting a data source:stdout - 1]
 {
   "rule_data": {
@@ -82,6 +49,39 @@ Error: Merge error. The 'rule_data' key was found more than once!
 ---
 
 [inspecting a data source:stderr - 1]
+
+---
+
+[inspecting a data source with a merge error:stdout - 1]
+
+---
+
+[inspecting a data source with a merge error:stderr - 1]
+Error: Merge error. The 'rule_data' key was found more than once!
+
+---
+
+[short names output:stdout - 1]
+kitty.purr
+
+---
+
+[short names output:stderr - 1]
+
+---
+
+[default output:stdout - 1]
+# Source: git::${GITHOST}/git/policy.git?ref=${LATEST_COMMIT}
+
+kitty.purr (deny)
+https://conforma.dev/docs/policy/packages/release_kitty.html#kitty__purr
+Kittens
+Fluffy
+--
+
+---
+
+[default output:stderr - 1]
 
 ---
 
