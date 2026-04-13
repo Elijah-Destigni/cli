@@ -8,6 +8,72 @@ Error: error validating file input.json: evaluating policy: load: load documents
 
 ---
 
+[valid policy URL:stdout - 1]
+{
+  "success": true,
+  "filepaths": [
+    {
+      "filepath": "pipeline_definition.yaml",
+      "violations": [],
+      "warnings": [],
+      "successes": null,
+      "success": true,
+      "success-count": 1
+    }
+  ],
+  "policy": {
+    "sources": [
+      {
+        "policy": [
+          "git::https://${GITHOST}/git/happy-day-policy.git"
+        ]
+      }
+    ]
+  },
+  "ec-version": "${EC_VERSION}",
+  "effective-time": "${TIMESTAMP}"
+}
+---
+
+[valid policy URL:stderr - 1]
+
+---
+
+[multiple data source top level key map merging:stdout - 1]
+ec-version: ${EC_VERSION}
+effective-time: "${TIMESTAMP}"
+filepaths:
+- filepath: input.json
+  success: true
+  success-count: 0
+  successes: null
+  violations: []
+  warnings:
+  - msg: '{"george":"lead","john":"rhythm","paul":"bass","ringo":"drums"}'
+policy:
+  sources:
+  - data:
+    - file::acceptance/examples/data-merges/data-1
+    - file::acceptance/examples/data-merges/data-2
+    policy:
+    - file::acceptance/examples/data-merges/policy
+success: true
+
+---
+
+[multiple data source top level key map merging:stderr - 1]
+
+---
+
+[policy URL with no rego files:stdout - 1]
+
+---
+
+[policy URL with no rego files:stderr - 1]
+Error: error validating file pipeline_definition.yaml: evaluating policy: no rego files found in policy subdirectory
+
+---
+
 [policy with multiple sources:stdout - 1]
 {
   "success": false,
@@ -55,71 +121,5 @@ Error: error validating file input.json: evaluating policy: load: load documents
 
 [policy with multiple sources:stderr - 1]
 Error: success criteria not met
-
----
-
-[valid policy URL:stdout - 1]
-{
-  "success": true,
-  "filepaths": [
-    {
-      "filepath": "pipeline_definition.yaml",
-      "violations": [],
-      "warnings": [],
-      "successes": null,
-      "success": true,
-      "success-count": 1
-    }
-  ],
-  "policy": {
-    "sources": [
-      {
-        "policy": [
-          "git::https://${GITHOST}/git/happy-day-policy.git"
-        ]
-      }
-    ]
-  },
-  "ec-version": "${EC_VERSION}",
-  "effective-time": "${TIMESTAMP}"
-}
----
-
-[valid policy URL:stderr - 1]
-
----
-
-[policy URL with no rego files:stdout - 1]
-
----
-
-[policy URL with no rego files:stderr - 1]
-Error: error validating file pipeline_definition.yaml: evaluating policy: no rego files found in policy subdirectory
-
----
-
-[multiple data source top level key map merging:stdout - 1]
-ec-version: ${EC_VERSION}
-effective-time: "${TIMESTAMP}"
-filepaths:
-- filepath: input.json
-  success: true
-  success-count: 0
-  successes: null
-  violations: []
-  warnings:
-  - msg: '{"george":"lead","john":"rhythm","paul":"bass","ringo":"drums"}'
-policy:
-  sources:
-  - data:
-    - file::acceptance/examples/data-merges/data-1
-    - file::acceptance/examples/data-merges/data-2
-    policy:
-    - file::acceptance/examples/data-merges/policy
-success: true
-
----
-
-[multiple data source top level key map merging:stderr - 1]
 
 ---

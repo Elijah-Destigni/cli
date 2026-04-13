@@ -90,21 +90,9 @@ true
 }
 ---
 
-[Strict with failures:results - 1]
-{
-  "TEST_OUTPUT": "{\"timestamp\":\"${TIMESTAMP}\",\"namespace\":\"\",\"successes\":0,\"failures\":1,\"warnings\":0,\"result\":\"FAILURE\"}\n"
-}
----
-
 [Initialize TUF fails:initialize-tuf - 1]
 Error: Get "http://tuf.invalid/root.json": dial tcp: lookup tuf.invalid on 10.96.0.10:53: no such host
 
----
-
-[Non strict with warnings:results - 1]
-{
-  "TEST_OUTPUT": "{\"timestamp\":\"${TIMESTAMP}\",\"namespace\":\"\",\"successes\":3,\"failures\":0,\"warnings\":1,\"result\":\"WARNING\"}\n"
-}
 ---
 
 [Outputs are there:results - 1]
@@ -121,35 +109,6 @@ Error: Get "http://tuf.invalid/root.json": dial tcp: lookup tuf.invalid on 10.96
 
 [Initialize TUF fails:results - 1]
 {}
----
-
-[Titles and descriptions can be excluded:results - 1]
-{
-  "TEST_OUTPUT": "{\"timestamp\":\"${TIMESTAMP}\",\"namespace\":\"\",\"successes\":3,\"failures\":0,\"warnings\":0,\"result\":\"SUCCESS\"}\n"
-}
----
-
-[Extra rule data provided to task:results - 1]
-{
-  "TEST_OUTPUT": "{\"timestamp\":\"${TIMESTAMP}\",\"namespace\":\"\",\"successes\":5,\"failures\":0,\"warnings\":0,\"result\":\"SUCCESS\"}\n"
-}
----
-
-[Initialize TUF succeeds:initialize-tuf - 1]
-${TIMESTAMP} INFO Step was skipped due to when expressions were evaluated to false.
-
----
-
-[Strict with warnings:results - 1]
-{
-  "TEST_OUTPUT": "{\"timestamp\":\"${TIMESTAMP}\",\"namespace\":\"\",\"successes\":3,\"failures\":0,\"warnings\":1,\"result\":\"WARNING\"}\n"
-}
----
-
-[PUBLIC_KEY param overwrites key from policy:results - 1]
-{
-  "TEST_OUTPUT": "{\"timestamp\":\"${TIMESTAMP}\",\"namespace\":\"\",\"successes\":3,\"failures\":0,\"warnings\":0,\"result\":\"SUCCESS\"}\n"
-}
 ---
 
 [Golden container image:show-config - 1]
@@ -175,8 +134,49 @@ ${TIMESTAMP} INFO Step was skipped due to when expressions were evaluated to fal
 }
 ---
 
+[Strict with warnings:results - 1]
+{
+  "TEST_OUTPUT": "{\"timestamp\":\"${TIMESTAMP}\",\"namespace\":\"\",\"successes\":3,\"failures\":0,\"warnings\":1,\"result\":\"WARNING\"}\n"
+}
+---
+
+[Extra rule data provided to task:results - 1]
+{
+  "TEST_OUTPUT": "{\"timestamp\":\"${TIMESTAMP}\",\"namespace\":\"\",\"successes\":5,\"failures\":0,\"warnings\":0,\"result\":\"SUCCESS\"}\n"
+}
+---
+
+[Titles and descriptions can be excluded:results - 1]
+{
+  "TEST_OUTPUT": "{\"timestamp\":\"${TIMESTAMP}\",\"namespace\":\"\",\"successes\":3,\"failures\":0,\"warnings\":0,\"result\":\"SUCCESS\"}\n"
+}
+---
+
+[Strict with failures:results - 1]
+{
+  "TEST_OUTPUT": "{\"timestamp\":\"${TIMESTAMP}\",\"namespace\":\"\",\"successes\":0,\"failures\":1,\"warnings\":0,\"result\":\"FAILURE\"}\n"
+}
+---
+
+[PUBLIC_KEY param overwrites key from policy:results - 1]
+{
+  "TEST_OUTPUT": "{\"timestamp\":\"${TIMESTAMP}\",\"namespace\":\"\",\"successes\":3,\"failures\":0,\"warnings\":0,\"result\":\"SUCCESS\"}\n"
+}
+---
+
+[Initialize TUF succeeds:initialize-tuf - 1]
+${TIMESTAMP} INFO Step was skipped due to when expressions were evaluated to false.
+
+---
+
 [Initialize TUF succeeds:results - 1]
 {
   "TEST_OUTPUT": "{\"timestamp\":\"${TIMESTAMP}\",\"namespace\":\"\",\"successes\":5,\"failures\":0,\"warnings\":0,\"result\":\"SUCCESS\"}\n"
+}
+---
+
+[Non strict with warnings:results - 1]
+{
+  "TEST_OUTPUT": "{\"timestamp\":\"${TIMESTAMP}\",\"namespace\":\"\",\"successes\":3,\"failures\":0,\"warnings\":1,\"result\":\"WARNING\"}\n"
 }
 ---

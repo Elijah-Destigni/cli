@@ -1,18 +1,4 @@
 
-[success:stdout - 1]
-[
-  {
-    "filename": "acceptance/examples/empty_input.json",
-    "namespace": "main",
-    "successes": 1
-  }
-]
----
-
-[success:stderr - 1]
-
----
-
 [appstudio success:stdout - 1]
 {
   "timestamp": "${TIMESTAMP}",
@@ -26,5 +12,19 @@
 ---
 
 [appstudio success:stderr - 1]
+
+---
+
+[success:stdout - 1]
+[
+  {
+    "filename": "acceptance/examples/empty_input.json",
+    "namespace": "main",
+    "successes": 1
+  }
+]
+---
+
+[success:stderr - 1]
 
 ---
