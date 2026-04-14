@@ -94,6 +94,14 @@ func stubRekordRunning(ctx context.Context) (context.Context, error) {
 		return ctx, err
 	}
 
+	if err = wiremock.StubFor(ctx, wiremock.Post(wiremock.URLPathEqualTo("/api/v1/log/entries/retrieve")).
+		WillReturnResponse(
+			wiremock.NewResponse().WithBody("[]").WithHeaders(
+				map[string]string{"Content-Type": "application/json"},
+			).WithStatus(200))); err != nil {
+		return ctx, err
+	}
+
 	return ctx, nil
 }
 
@@ -356,6 +364,15 @@ func IsRunning(ctx context.Context) bool {
 	return testenv.HasState[rekorState](ctx)
 }
 
+// stubEmptyRekorResponses creates a WireMock stub that returns an empty array
+// for Rekor entry lookups, simulating "no entries found"
+func stubEmptyRekorResponses(ctx context.Context) error {
+	return wiremock.StubFor(ctx, wiremock.Post(wiremock.URLPathEqualTo("/api/v1/log/entries/retrieve")).
+		WillReturnResponse(wiremock.NewResponse().WithBody("[]").WithHeaders(
+			map[string]string{"Content-Type": "application/json"},
+		).WithStatus(200)))
+}
+
 // AddStepsTo adds Gherkin steps to the godog ScenarioContext
 func AddStepsTo(sc *godog.ScenarioContext) {
 	sc.Step(`^stub rekord running$`, stubRekordRunning)
@@ -363,6 +380,7 @@ func AddStepsTo(sc *godog.ScenarioContext) {
 	sc.Step(`^a valid Rekor entry for image signature of "([^"]*)"$`, RekorEntryForImageSignature)
 	sc.Step(`^VSA upload to Rekor should be expected$`, expectVSAUploadToRekor)
 	sc.Step(`^VSA should be uploaded to Rekor successfully$`, vsaShouldBeUploadedToRekor)
+	sc.Step(`^Rekor has no entries for the signatures$`, stubEmptyRekorResponses)
 }
 
 // expectVSAUploadToRekor creates WireMock stubs to expect VSA upload requests to Rekor
